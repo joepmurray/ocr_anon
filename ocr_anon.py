@@ -3,6 +3,11 @@
 # takes 2 arguments - a text string and a jpg file.  Uses easyocr optical character recognition to scan 
 # the jpg file for the text string.  If it finds the text string in the image, it blocks it out by drawing a 
 # solid box over the text pixel area, and creates a new output.jpg file
+# Usage: python3 ocr_anon.py "PATIENT_NAME" ultrasound.jpg
+#
+# Future improvements: 
+# - add multiple search strings (e.g. for name, and medical record number)
+# - add the ability to fail or proceed based on low-probability matches from the OCR scan (need data to test)
 # Joe Murray 5/13/2022
 #-------------------------------------------------------------------------------------------------------
 
@@ -16,7 +21,7 @@ def ocr_image(image_file, text_string):
 
   Args:
     image_file: The path to the image file.
-    text_string: The text string to search for.
+    text_string: The text string to search for. 
 
   Returns:
     The text found in the image file.
