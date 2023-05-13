@@ -1,5 +1,6 @@
 #-----------------------------------------------------------------------------------------------------------------
 # ocr_anon.py
+# Joe Murray 5/13/2023
 # Anonymizes an image file by searching for sensitive text, and redacting that text from the "burned-in" pixel data.
 # Useful for removing protected healthcare information (PHI) from radiology/cardiology images so they can be used to
 # train AI models without disclosing HIPAA-protected patient information.
@@ -7,12 +8,12 @@
 # takes 2 arguments - a text string and a jpg file.  Uses easyocr optical character recognition to scan 
 # the jpg file for the text string.  If it finds the text string in the image, it blocks it out by drawing a 
 # solid box over the text pixel area, and creates a new output.jpg file
+#
 # Usage: python3 ocr_anon.py "PATIENT_NAME" ultrasound.jpg
 #
 # Future improvements: 
 # - add multiple search strings (e.g. for name, and medical record number)
 # - add the ability to fail or proceed based on low-probability matches from the OCR scan (need data to test)
-# Joe Murray 5/13/2023
 #--------------------------------------------------------------------------------------------------------------------
 
 import cv2
@@ -69,6 +70,10 @@ def main():
   # print("main() text variable",text)
 
   count=0
+  # each element in text contains a tuple: [0]=the four coordinates of the bounding box of the pixels,
+  # [1] = the text_string that was found in the pixel data, and [3] = the probability of a match between the
+  # textual string data and the pixel representation of the string being searched.
+  
   for element in text:  
     if text_string in element:
       count += 1
