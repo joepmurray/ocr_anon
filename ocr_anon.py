@@ -15,7 +15,7 @@
 # - add multiple search strings (e.g. for name, medical record number, birthdate all in one OCR scan)
 # - add the ability to fail or proceed based on low-probability matches from the OCR scan (need data to test)
 # - any improvements to better integrate with DICOM file formats/transfer syntaxes directly for medical imaging workflows
-# - deal with rotation, sideways text
+# - deal with multibyte character sets, non-english, serif fonts, rotation, sideways text
 #--------------------------------------------------------------------------------------------------------------------
 
 import cv2
