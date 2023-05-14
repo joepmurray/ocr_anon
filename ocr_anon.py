@@ -77,7 +77,7 @@ def main():
   # textual string data and the pixel representation of the string being searched.
   
   for element in text:  
-    if text_string in element:
+    if text_string.lower() in element[1].lower():
       count += 1
       print(text_string, "is found in ", element)
 
