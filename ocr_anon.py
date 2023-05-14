@@ -49,7 +49,10 @@ def ocr_image(image_file, text_string):
   text = reader.readtext(grayscale_image)
   # print(text)
 
-  # Find the coordinates of the text found.
+  # Find the coordinates of the text found.  Note: this is janky and useless.  I'm using the coordinates 
+  # that are  provided as part of the text object, so I'm effectively getting double coordinates in two 
+  # different data structure formats.  I don't want to throw this out just yet, until I'm sure there's 
+  # not something useful I can do with it.  --jpm
   coordinates = []
   for contour in contours:
     x, y, w, h = cv2.boundingRect(contour)
