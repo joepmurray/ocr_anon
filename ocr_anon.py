@@ -21,6 +21,7 @@
 import cv2
 import easyocr
 import sys
+import os
 
 def ocr_image(image_file, text_string):
   """
@@ -68,9 +69,6 @@ def main():
   # Perform OCR on the image file.
   text, coordinates = ocr_image(image_file, text_string)
 
-  # print("main() text string",text_string)  
-  # print("main() text variable",text)
-
   count=0
   # each element in text contains a tuple: [0]=the four coordinates of the bounding box of the pixels,
   # [1] = the text_string that was found in the pixel data, and [3] = the probability of a match between the
@@ -91,13 +89,19 @@ def main():
       # Draw the solid rectangle over the text. -1 fills the box
       cv2.rectangle(image, (text_coord[0][0], text_coord[0][1]), (text_coord[2][0], text_coord[2][1]), (255, 0, 0), -1)
 
-      # create a new jpg output file
-      cv2.imwrite("output.jpg", image)
-        
   if (count == 0):
     print("The text string was not found in the image file.")
   else:
     print(count, " instances of ", text_string, " were found in the file ", image_file)
+    
+    # Split the filename into the name and extension
+    f_name, f_extension = os.path.splitext(image_file)
+
+    # Create the output file
+    output_filename = f_name + "_anon" + f_extension
+
+    # create a new jpg output file
+    cv2.imwrite(output_filename, image)
 
 if __name__ == "__main__":
   main()
