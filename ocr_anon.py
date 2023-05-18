@@ -90,8 +90,8 @@ def main():
         # Draw the box with blue border.  Color is BGR so 255,0,0 is blue.
         # cv2.rectangle(image, (text_coord[0][0], text_coord[0][1]), (text_coord[2][0], text_coord[2][1]), (255, 0, 0), 2)
 
-        # Draw the solid rectangle over the text. -1 fills the box
-        cv2.rectangle(image, (text_coord[0][0], text_coord[0][1]), (text_coord[2][0], text_coord[2][1]), (255, 0, 0), -1)
+        # Draw the solid black redact rectangle over the text. -1 fills the box
+        cv2.rectangle(image, (text_coord[0][0], text_coord[0][1]), (text_coord[2][0], text_coord[2][1]), (0, 0, 0), -1)
   
   if (count > 0):
     

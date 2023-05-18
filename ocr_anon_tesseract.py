@@ -15,7 +15,6 @@
 #    not this: $ python ocr_anon_tesseract.py "JOHN SMITH" image.jpg
 #
 # Future improvements: 
-# - add multiple search strings (e.g. for name, medical record number, birthdate all in one OCR scan)
 # - add the ability to fail or proceed based on low-probability matches from the OCR scan (need data to test)
 # - any improvements to better integrate with DICOM file formats/transfer syntaxes directly for medical imaging workflows
 # - deal with multibyte character sets, non-english, serif fonts, rotation, sideways text
@@ -70,7 +69,7 @@ def main():
           # print(f"height: {df['height'][i]}")
 
           # draw a solid rectangle over the found text
-          cv2.rectangle(image, (df['left'][i], df['top'][i]), (df['left'][i]+df['width'][i], df['top'][i]+df['height'][i]), (255, 0, 0), -1)
+          cv2.rectangle(image, (df['left'][i], df['top'][i]), (df['left'][i]+df['width'][i], df['top'][i]+df['height'][i]), (0, 0, 0), -1)
 
           print("The text string:", text_string, "was found in the image file.")
 
